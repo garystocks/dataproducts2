@@ -1,0 +1,38 @@
+---
+title: "Course 9 Week 3 Assignment"
+author: "Gary Stocks"
+date: "05 August 2018"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+library(plotly)
+library(tidyr)
+library(dplyr)
+data("JohnsonJohnson")
+
+```
+
+## Quarterly Earnings for Johnson & Johnson Shares
+
+This presentation shows a time-series plot of the quarterly earnings for Johnson & Johnson shares from 1960 to 1980. The corporate website for Johnson & Johnson can be seen [here](https://www.jnj.com/).
+
+## Quarterly Earnings Plot
+
+```{r plot, echo=FALSE}
+
+stocks <- as.data.frame(JohnsonJohnson) %>%
+        mutate(Time = time(JohnsonJohnson))
+
+names(stocks)[1] <- "Earnings"
+
+plot_ly(stocks, x = ~Time, y = ~Earnings, type = "scatter", mode = "lines")
+
+```
+
+## Analysis
+
+Notice how the earnings plot increases over time, even though there are moves up and down across quarters. The 'hockey stick' shape shows an exponential increase in earnings, which means the company is generating profitable returns from investments.
+
