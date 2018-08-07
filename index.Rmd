@@ -17,7 +17,9 @@ data("JohnsonJohnson")
 
 ## Quarterly Earnings for Johnson & Johnson Shares
 
+<div class="blue3">
 This presentation shows a time-series plot of the quarterly earnings for Johnson & Johnson shares from 1960 to 1980. The corporate website for Johnson & Johnson can be seen [here](https://www.jnj.com/).
+</div>
 
 ## Quarterly Earnings Plot
 
@@ -34,5 +36,13 @@ plot_ly(stocks, x = ~Time, y = ~Earnings, type = "scatter", mode = "lines")
 
 ## Analysis
 
-Notice how the earnings plot increases over time, even though there are moves up and down across quarters. The 'hockey stick' shape shows an exponential increase in earnings, which means the company is generating profitable returns from investments.
+```{r analysis, echo=FALSE}
 
+x <- (stocks$Earnings[84] - stocks$Earnings[1]) / 84
+x <- round(x*100,0)
+
+```
+
+<div class="blue3">
+Notice how the earnings plot increases over time, even though there are moves up and down across quarters. The 'hockey stick' shape shows an exponential increase in earnings, which means the company is generating profitable returns from investments. The average growth is **`r x`%** quarter on quarter.
+</div>
